@@ -1,0 +1,84 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(5, 5, 5);
+    height: 320px;
+    width: 250px;
+    background-color: #302a2afb;
+    border-radius: 10px;
+}
+
+.display{
+    text-align: right;
+    height: 90px;
+    font-size: 60px;
+    padding: 5px;
+    color: white;
+}
+
+.btn{
+    height: 46px;
+    width: 64px;
+    border: 1px solid  #3d343474;
+    background-color: #d4dedcc0;
+    color: white;
+    font-size: large;
+}
+
+.btn:hover{
+    background-color: bisque;
+}
+
+.btn:active{
+    background-color: #d5e168c0;
+}
+
+.btn-percentile{
+    background-color: #ffffffcf;
+    color: black;
+}
+
+.btn-reset{
+    background-color: #ffffffcf;
+    color: black;
+}
+
+.btn-signed{
+    background-color: #ffffffcf;
+    color: black;
+}
+
+.btn-0{
+    width: 128px;
+    border-bottom-left-radius: 7px;
+} 
+
+.btn-equate{
+    border-bottom-right-radius: 7px;
+    background-color: #e1920b;
+}
+
+.btn-addition{
+    background-color: #e1920b;
+}
+
+.btn-subtraction{
+    background-color: #e1920b;
+}
+
+.btn-multiplication{
+    background-color: #e1920b;
+}
+
+.btn-division{
+    background-color: #e1920b;
+}
+
+.button-row{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.button-container{
+
+}
