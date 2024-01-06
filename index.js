@@ -1,18 +1,27 @@
 let input1 = 0
 let operation = ''
 let input2 = 0
+let operationInProgress = false;
+
+
+function getDisplay(){
+    const displayElementQueryResult = document.getElementsByClassName('display')
+    if(displayElementQueryResult.length > 0){
+    const displayElement = displayElementQueryResult[0]
+    return displayElement;
+    }
+    return null;
+}
 
 function numClick(num){
     console.log(`The number ${num} was clicked`)
-    const displayElementQueryResult = document.getElementsByClassName('display')
-    if(displayElementQueryResult.length > 0){
-        const displayElement = displayElementQueryResult[0]
-        if(displayElement.innerHTML == '0' || operation.length){
+    const displayElement = getDisplay();
+        if(displayElement.innerHTML == '0' || operationInProgress){
             displayElement.innerHTML = num
+            operationInProgress = false
         }else{
             displayElement.innerHTML += num
         }
-    }
 
     const btnResetQueryResult = document.getElementsByClassName('btn-reset')
     if(btnResetQueryResult.length > 0){
@@ -23,56 +32,58 @@ function numClick(num){
 }
 
 function clearDisplay(){
-    displayElementQueryResult = document.getElementsByClassName('display')
-    if(displayElementQueryResult.length > 0){
-        const displayElement = displayElementQueryResult[0]
+        const displayElement = getDisplay();
         displayElement.innerHTML = 0
-    }
 
     const btnResetQueryResult = document.getElementsByClassName('btn-reset')
     if(btnResetQueryResult.length > 0){
         const btnResetElement = btnResetQueryResult[0];
         btnResetElement.innerHTML = 'AC'
     }
+    input1 = 0
+    operation = ''
+    input2 = 0
+    operationInProgress = false;
 }
 
-function add(){
-    const displayElementQueryResult = document.getElementsByClassName('display')
-    if(displayElementQueryResult.length > 0){
-        const displayElement = displayElementQueryResult[0]
+function arithmeticOperation(arithmetic_sign){
+    const displayElement = getDisplay();
+        if(operation.length){
+            getResult();
+        }
         if(Number(displayElement.innerHTML)){
             input1 = Number(displayElement.innerHTML)
-            operation = '+'
+            operation = arithmetic_sign;
+            operationInProgress = true;
         }
-    }
-}
-
-function subtract(){
-    const displayElementQueryResult = document.getElementsByClassName('display')
-    if(displayElementQueryResult.length > 0){
-        const displayElement = displayElementQueryResult[0]
-        if(Number(displayElement.innerHTML)){
-            input1 = Number(displayElement.innerHTML)
-            operation = '-'
-        }
-    }
 }
 
 function getResult(){
-    const displayElementQueryResult = document.getElementsByClassName('display')
-    let displayElement;
-    if(displayElementQueryResult.length > 0){
-        displayElement = displayElementQueryResult[0]
+    let displayElement = getDisplay();;
         if(Number(displayElement.innerHTML)){
             input2 = Number(displayElement.innerHTML)
         }
-    }
     let result = 0
-    if(operation == '+'){
-        result = input1 + input2
-        displayElement.innerHTML = result
-    }else if(operation == '-'){
-        result = input1 - input2
-        displayElement.innerHTML = result
+
+    switch(operation){
+        case '+':
+            result = input1 + input2
+            displayElement.innerHTML = result
+            break;
+        case '-':
+            result = input1 - input2
+            displayElement.innerHTML = result
+            break;
+        case '*':
+            result = input1 * input2
+            displayElement.innerHTML = result
+                break;
+        case '/':
+            result = input1 / input2
+            displayElement.innerHTML = result
+                break;
+        default:
+            break;
     }
 }
+
