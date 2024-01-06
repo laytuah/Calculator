@@ -14,7 +14,6 @@ function getDisplay(){
 }
 
 function numClick(num){
-    console.log(`The number ${num} was clicked`)
     const displayElement = getDisplay();
         if(displayElement.innerHTML == '0' || operationInProgress){
             displayElement.innerHTML = num
@@ -49,6 +48,9 @@ function clearDisplay(){
 function arithmeticOperation(arithmetic_sign){
     const displayElement = getDisplay();
         if(operation.length){
+            if(operationInProgress){
+                return
+            }
             getResult();
         }
         if(Number(displayElement.innerHTML)){
