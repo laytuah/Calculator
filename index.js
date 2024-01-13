@@ -64,7 +64,7 @@ function getResult(){
         if(Number(displayElement.innerHTML)){
             input2 = Number(displayElement.innerHTML)
         }
-    let result = 0
+    let result = 0;
 
     switch(operation){
         case '+':
