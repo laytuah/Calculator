@@ -23,19 +23,17 @@ function numClick(num){
         }
 
     const btnResetQueryResult = document.getElementsByClassName('btn-reset')
-    if(btnResetQueryResult.length > 0){
+    if(btnResetQueryResult.length){
         const btnResetElement = btnResetQueryResult[0];
         btnResetElement.innerHTML = 'C'
-    }
-    
+    } 
 }
 
 function clearDisplay(){
         const displayElement = getDisplay();
         displayElement.innerHTML = 0
-
-    const btnResetQueryResult = document.getElementsByClassName('btn-reset')
-    if(btnResetQueryResult.length > 0){
+        const btnResetQueryResult = document.getElementsByClassName('btn-reset')
+    if(btnResetQueryResult.length){
         const btnResetElement = btnResetQueryResult[0];
         btnResetElement.innerHTML = 'AC'
     }
@@ -47,10 +45,11 @@ function clearDisplay(){
 
 function arithmeticOperation(arithmetic_sign){
     const displayElement = getDisplay();
-        if(operation.length){
-            if(operationInProgress){
-                return
-            }
+        if(operationInProgress){
+            operation = arithmetic_sign;
+            operationInProgress = true;
+            return;
+        }else if(operation.length){
             getResult();
         }
         if(Number(displayElement.innerHTML)){
@@ -87,5 +86,6 @@ function getResult(){
         default:
             break;
     }
+    operation = '';
 }
 
