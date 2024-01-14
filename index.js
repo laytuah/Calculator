@@ -51,7 +51,9 @@ function arithmeticOperation(arithmetic_sign){
             operation = arithmetic_sign;
             operationInProgress = true;
             return;
-        }else if(operation.length){
+        }/*else if(getResultActive){
+            
+        }*/else if(operation.length){
             getResult();
         }
         if(Number(displayElement.innerHTML)){
@@ -63,10 +65,14 @@ function arithmeticOperation(arithmetic_sign){
 
 function getResult(){
     let displayElement = getDisplay();
-    if(getResultActive){   
-    }else if(Number(displayElement.innerHTML)){
+    /*if(getResultActive){
+        
+    }else */if(Number(displayElement.innerHTML)){
         input2 = Number(displayElement.innerHTML)
     }
+        //if(Number(displayElement.innerHTML)){
+        //    input2 = Number(displayElement.innerHTML)
+        //}
     let result = 0;
     switch(operation){
         case '+':
@@ -88,7 +94,6 @@ function getResult(){
         default:
             break;
     }
-    input1 = result;
     getResultActive = true
 }
 
