@@ -43,6 +43,13 @@ function clearDisplay(){
     operationInProgress = false;
 }
 
+function negateValue(){
+    const displayElement = getDisplay();
+    if((displayElement.innerHTML)){
+        Number(displayElement.innerHTML * '-')
+    }
+}
+
 function arithmeticOperation(arithmetic_sign){
     const displayElement = getDisplay();
         if(operationInProgress){
@@ -85,7 +92,14 @@ function getResult(){
                 break;
         default:
             break;
-    }
-    operation = '';
+    }   
 }
 
+
+
+
+// 3         2        6
+//input1 * input2 = result
+
+// 6         2        12
+//result * input2 = new result
