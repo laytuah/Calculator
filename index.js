@@ -2,6 +2,7 @@ let input1 = 0
 let operation = ''
 let input2 = 0
 let operationInProgress = false;
+let getResultActive = false
 
 
 function getDisplay(){
@@ -41,13 +42,7 @@ function clearDisplay(){
     operation = ''
     input2 = 0
     operationInProgress = false;
-}
-
-function negateValue(){
-    const displayElement = getDisplay();
-    if((displayElement.innerHTML)){
-        Number(displayElement.innerHTML * '-')
-    }
+    getResultActive = false
 }
 
 function arithmeticOperation(arithmetic_sign){
@@ -67,12 +62,12 @@ function arithmeticOperation(arithmetic_sign){
 }
 
 function getResult(){
-    let displayElement = getDisplay();;
-        if(Number(displayElement.innerHTML)){
-            input2 = Number(displayElement.innerHTML)
-        }
+    let displayElement = getDisplay();
+    if(getResultActive){   
+    }else if(Number(displayElement.innerHTML)){
+        input2 = Number(displayElement.innerHTML)
+    }
     let result = 0;
-
     switch(operation){
         case '+':
             result = input1 + input2
@@ -92,7 +87,9 @@ function getResult(){
                 break;
         default:
             break;
-    }   
+    }
+    input1 = result;
+    getResultActive = true
 }
 
 
